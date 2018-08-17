@@ -1,5 +1,6 @@
 # Solidity_example
 simple solidity language example
+(some examples is reference from https://easonwang01.gitbooks.io/blockchain-and-cryptography/content/)
 
 //call_contract
 - calculate.sol 
