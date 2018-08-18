@@ -45,30 +45,33 @@ contract ERC20_token is ERC20_interface {   // 使用 is 繼承 ERC20_interface
 
     // 從合約擁有人地址轉帳
     function transfer(address _to, uint256 _value) public returns (bool success) {
-        require(balances[msg.sender] >= _value);
-        balances[msg.sender] -= _value;
-        balances[_to] += _value;
-        Transfer(msg.sender, _to, _value);
+        uint256 tokenvalue = _value * 10 ** uint256(decimals); //token number
+        require(balances[msg.sender] >= tokenvalue);
+        balances[msg.sender] -= tokenvalue;
+        balances[_to] += tokenvalue;
+        Transfer(msg.sender, _to, tokenvalue);
         return true;
     }
 
     // 從某一人地址轉給另一人地址，需要其轉帳配額有被同意，可想像為小明(msg.sender)用爸爸的副卡(_from)轉帳給別人(_to)
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        uint256 Fromvalue = Fromvalue * 10 ** uint256(decimals); //token number
         uint256 allowance = allowed[_from][msg.sender];
-        require(balances[_from] >= _value && allowance >= _value);
-        balances[_to] += _value;
-        balances[_from] -= _value;
+        require(balances[_from] >= Fromvalue && allowance >= Fromvalue);
+        balances[_to] += Fromvalue;
+        balances[_from] -= Fromvalue;
         if (allowance < MAX_UINT256) {
-            allowed[_from][msg.sender] -= _value;
+            allowed[_from][msg.sender] -= Fromvalue;
         }
-        Transfer(_from, _to, _value);
+        Transfer(_from, _to, Fromvalue);
         return true;
     }
 
     // 給予特定帳號轉帳配額  類似小明的爸爸(msg.sender)給小明(_spender)一張信用卡副卡，額度為value
     function approve(address _spender, uint256 _value) public returns (bool success) {
-        allowed[msg.sender][_spender] = _value;
-        Approval(msg.sender, _spender, _value);
+        uint256 approvalue = _value * 10 ** uint256(decimals); //token number
+        allowed[msg.sender][_spender] = approvalue;
+        Approval(msg.sender, _spender, approvalue);
         return true;
     }
 
@@ -100,5 +103,29 @@ contract ERC20_token is ERC20_interface {   // 使用 is 繼承 ERC20_interface
     // 從區塊鏈上移出合約
     function deleteContract() public onlyOwner {
         selfdestruct(owner);  // 將合約剩餘的Ether轉給owner
+    }
+    
+    //Get contract balance
+    function getContractBalance() constant returns (uint){
+        return this.balance;
+    }
+    
+    //Get contract address
+    function getContractAddrees() constant returns (address){
+        return this;
+    }
+    
+    
+    //fallback函数对应记录事件
+     event fallbackTrigged(bytes data);
+     //合约接收send()的 ether时，必须存在
+     function() payable{fallbackTrigged(msg.data);}
+    
+    event SendEvent(address to, uint value, bool result);
+    //使用send()发送ether
+    function sendEther(){
+        //使用this来模拟从另一个合约发送
+        bool result = this.send(1000000000000000000);
+        SendEvent(this, 1000000000000000000, result);
     }
 }
