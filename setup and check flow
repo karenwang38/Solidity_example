@@ -43,6 +43,8 @@ todo
 	a. how to use geth command to complish payable (assign msg.value : transfer eth to contract address)
 	b. withdraw fail on Remix?
 
+2. use truffle and do again.
+
 
 
 
