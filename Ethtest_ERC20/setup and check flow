@@ -40,6 +40,8 @@ Bug
 
 todo
 1. use Geth to excute funcitons again.
+	a. how to use geth command to complish payable (assign msg.value : transfer eth to contract address)
+	b. withdraw fail on Remix?
 
 
 
