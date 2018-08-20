@@ -38,7 +38,7 @@ After deploying contract, access function from Remix as folloing:
 Bug
 1. the Transfer function with token number problem. the number is not correct.
 
-todo
+todo (close)
 1. use Geth to excute funcitons again.
 	a. how to use geth command to complish payable (assign msg.value : transfer eth to contract address)
 	b. withdraw fail on Remix?
