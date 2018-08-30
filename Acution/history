@@ -1,0 +1,328 @@
+persoanl.newAccounts
+persoanl.newAccounts()
+persoanl.newAccount()
+eth.coinbase
+persoanl.newAccount()
+eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: web3.toWei(100, "ether")})
+eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[2], value: web3.toWei(100, "ether")})
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[2])
+personal.listAccounts()
+personal.listAccounts
+var _biddingTime = 300/* var of type uint256 here */ ;
+var _beneficiary = "0xbf14e0c72896b83b232ea67af367e986fa92e5be"/* var of type address here */ ;
+var simpleauctionContract = web3.eth.contract([{"constant":false,"inputs":[],"name":"bid","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"auctionEnd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"beneficiary","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"highestBidder","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"highestBid","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_biddingTime","type":"uint256"},{"name":"_beneficiary","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bidder","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"HighestBidIncreased","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"winner","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"AuctionEnded","type":"event"}]);
+var simpleauction = simpleauctionContract.new(
+   _biddingTime,
+   _beneficiary,
+   {
+     from: web3.eth.accounts[0], 
+     data: '0x608060405234801561001057600080fd5b5060405160408061054d83398101604052805160209091015160008054600160a060020a03909216600160a060020a031990921691909117905542016001556104ef8061005e6000396000f3006080604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631998aeef811461007c5780632a24f46c1461008657806338af3eed1461009b5780633ccfd60b146100d957806391f9015714610102578063d57bde7914610117575b600080fd5b61008461013e565b005b34801561009257600080fd5b50610084610290565b3480156100a757600080fd5b506100b061041b565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b3480156100e557600080fd5b506100ee610437565b604080519115158252519081900360200190f35b34801561010e57600080fd5b506100b06104a1565b34801561012357600080fd5b5061012c6104bd565b60408051918252519081900360200190f35b600154421115610198576040805160e560020a62461bcd02815260206004820152601660248201527f41756374696f6e20616c726561647920656e6465642e00000000000000000000604482015290519081900360640190fd5b60035434116101f1576040805160e560020a62461bcd02815260206004820152601e60248201527f546865726520616c7265616479206973206120686967686572206269642e0000604482015290519081900360640190fd5b6003541561022b5760035460025473ffffffffffffffffffffffffffffffffffffffff166000908152600460205260409020805490910190555b6002805473ffffffffffffffffffffffffffffffffffffffff19163390811790915534600381905560408051928352602083019190915280517ff4757a49b326036464bec6fe419a4ae38c8a02ce3e68bf0809674f6aab8ad3009281900390910190a1565b6001544210156102ea576040805160e560020a62461bcd02815260206004820152601660248201527f41756374696f6e206e6f742079657420656e6465642e00000000000000000000604482015290519081900360640190fd5b60055460ff161561036b576040805160e560020a62461bcd02815260206004820152602360248201527f61756374696f6e456e642068617320616c7265616479206265656e2063616c6c60448201527f65642e0000000000000000000000000000000000000000000000000000000000606482015290519081900360840190fd5b6005805460ff191660011790556002546003546040805173ffffffffffffffffffffffffffffffffffffffff9093168352602083019190915280517fdaec4582d5d9595688c8c98545fdd1c696d41c6aeaeb636737e84ed2f5c00eda9281900390910190a16000805460035460405173ffffffffffffffffffffffffffffffffffffffff9092169281156108fc029290818181858888f19350505050158015610418573d6000803e3d6000fd5b50565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b336000908152600460205260408120548181111561049857336000818152600460205260408082208290555183156108fc0291849190818181858888f19350505050151561049857336000908152600460205260408120829055915061049d565b600191505b5090565b60025473ffffffffffffffffffffffffffffffffffffffff1681565b600354815600a165627a7a7230582082cb6e3a9e6cd24ea69232ab3bc531c0fa7f6d4bde6a309f6cd4c3c1bc6294960029', 
+     gas: '4700000'
+   }, function (e, contract){
+    console.log(e, contract);
+    if (typeof contract.address !== 'undefined') {
+         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+    }
+ })
+var SimpleAcution = eth.contract([{"constant":false,"inputs":[],"name":"auctionEnd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"bid","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bidder","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"HighestBidIncreased","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"winner","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"AuctionEnded","type":"event"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_biddingTime","type":"uint256"},{"name":"_beneficiary","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"beneficiary","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"highestBid","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"highestBidder","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}]).at("0x8DafcEc55C3b70af38977Dd5212C27A0593d9122")
+SimpleAcution.beneficiary()
+SimpleAcution.auctionend()
+SimpleAcution.auctionEnd()
+SimpleAcution.auctionEnd
+SimpleAcution.auctionEnd()
+SimpleAcution.highestBidder()
+SimpleAcution.highestBid()
+personal.listAccounts()
+personal.listAccount()
+personal.listAccounts()
+personal.listAccounts
+eth.defaultAccount = "0xbf14e0c72896b83b232ea67af367e986fa92e5be"
+SipmleAcution.bid({value : web3.toWei(10, "ether")})
+SimpleAcution.bid({value: web3.toWei(10, "ether")})
+SipmleAcution.bid({value : web3.toWei(10, "ether")})
+SimpleAcution.bid({value: web3.toWei(10, "ether")})
+SimpleAcution.highestBidder()
+SimpleAcution.highestBid()
+SimpleAcution.bid({value: web3.toWei(10, "ether")})
+eth.getBalance(eth.defaultAccout)
+eth.getBalance(eth.accounts[1])
+SimpleAcution.bid({value: 1000000000000000000)})
+SimpleAcution.bid({value: 100000000000000000)})
+SimpleAcution.bid({value: 100000000)})
+SimpleAcution.bid({value: web3.toWei(10, "ether")})
+eth.getBalance(eth.accounts[1])
+SimpleAcution(300, eth.coinbase)
+SimpleAcution.auctionEnd()
+SimpleAcution.withdraw()
+SimpleAcution.auctionEnd()
+const eventHandler = ContractInstance.allEvents((error, event) => {
+  if (error) {
+    throw error
+  }
+  console.log('Event:');
+  console.log(event);
+});
+ContractInstance = web3.eth.contract(Contract.ABI).at(.address);
+const eventHandler = ContractInstance.allEvents((error, event) => {
+  if (error) {
+    throw error
+  }
+  console.log('Event:');
+  console.log(event);
+});
+const eventHandler = SimpleAcution.allEvents((error, event) => {
+  if (error) {
+    throw error
+  }
+  console.log('Event:');
+  console.log(event);
+});
+const event = SimpleAcution.AuctionEnded({}, {fromBlock: 0, toBlock: 'latest'}, function (error, result) {
+  if (!error)
+  console.log(result)
+});
+constevent=SimpleAcution.AuctionEnded({},{fromBlock:0,toBlock:'latest'},function(error,result){if(!error)console.log(result)});
+SimpleAcution.auctionEnd()
+SimpleAcution.acutionEnd()
+SimpleAcution.auctionEnd()
+constevent=SimpleAcution.AuctionEnded({},{fromBlock:0,toBlock:'latest'},function(error,result){if(!error)console.log(result)});
+SimpleAcution.auctionEnd()
+consteventHandler=SimpleAcution.allEvents((error,event)=>{if(error){throwerror}console.log('Event:');console.log(event);});
+const eventHandler=SimpleAcution.allEvents((error,event)=>{if(error){throwerror}console.log('Event:');console.log(event);});
+const eventHandler = SimpleAcution.allEvents((error, event) => {  if (error) {    throw error  }  console.log('Event:');  console.log(event);});
+SimpleAcution.auctionEnd()
+ContractInstance = web3.eth.contract([{"constant":false,"inputs":[],"name":"auctionEnd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"bid","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bidder","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"HighestBidIncreased","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"winner","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"AuctionEnded","type":"event"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_biddingTime","type":"uint256"},{"name":"_beneficiary","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"beneficiary","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"highestBid","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"highestBidder","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}]).at("0x8DafcEc55C3b70af38977Dd5212C27A0593d9122");
+const eventHandler = ContractInstance.allEvents((error, event) => {  if (error) {    throw error  }  console.log('Event:');  console.log(event);});
+SimpleAcution.auctionEnd()
+eth.defaultAccount
+eth.defaultAccount = eth.accounts[0]
+SimpleAcution.auctionEnd()
+eth.block
+eth.blocknumber
+eth.blocknumber()
+eth.blockNumber
+eth.accounts
+eth.syncing
+eth.accounts
+var examplecontractContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":false,"name":"_value","type":"int256"}],"name":"ReturnValue","type":"event"}]);
+var examplecontract = examplecontractContract.new(
+   {
+     from: web3.eth.accounts[0], 
+     data: '0x6080604052348015600f57600080fd5b5060d28061001e6000396000f300608060405260043610603e5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416634c970b2f81146043575b600080fd5b348015604e57600080fd5b506058600435606a565b60408051918252519081900360200190f35b60408051828152905160009133917f49b8f73ede7e3add061b44b8290927d0f2dbdd6f7aad5c7e110893c40e51c8619181900360200190a250905600a165627a7a723058201353c68fb675c70f713d6d33a5c3a12d735c5ba5cb2a57a8ade1c25e0fdbb7930029', 
+     gas: '4700000'
+   }, function (e, contract){
+    console.log(e, contract);
+    if (typeof contract.address !== 'undefined') {
+         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+    }
+ })
+node index.js
+var exampleContract = eth.contract([{"constant":false,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":false,"name":"_value","type":"int256"}],"name":"ReturnValue","type":"event"}]).at("0x8DA37a2847970e1cAe89E4A63D9ABFa2e83a8d5B")
+var exampleEvent = exampleContract.ReturnValue({_from: web3.eth.coinbase});
+exampleEvent.watch(function(err, result) {
+  if (err) {
+    console.log(err)
+    return;
+  }
+  console.log(result.args._value)
+  // check that result.args._from is web3.eth.coinbase then
+  // display result.args._value in the UI and call
+  // exampleEvent.stopWatching()
+})
+exampleContract.foo.sendTransaction(2, {from: web3.eth.coinbase})
+exampleContract.foo(2)
+exampleContract.foo()
+exampleContract.foo('544')
+exampleContract.foo(2)
+exampleContract
+exampleContract.foo()
+exampleContract.foo2)
+exampleContract.foo(2)
+exampleContract.foo(2);
+exampleContract.foo.sendTransaction(2, {from: web3.eth.coinbase})
+exampleContract.foo.(2)
+exampleContract.foo(2)
+eth.coinbase
+eth.accounts
+exampleContract.foo(200)
+var examplecontractContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":false,"name":"_value","type":"int256"}],"name":"ReturnValue","type":"event"}]);
+var examplecontract = examplecontractContract.new(
+   {
+     from: web3.eth.accounts[0], 
+     data: '0x6080604052348015600f57600080fd5b5060d28061001e6000396000f300608060405260043610603e5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416634c970b2f81146043575b600080fd5b348015604e57600080fd5b506058600435606a565b60408051918252519081900360200190f35b60408051828152905160009133917f49b8f73ede7e3add061b44b8290927d0f2dbdd6f7aad5c7e110893c40e51c8619181900360200190a250905600a165627a7a72305820849abc50a5cb0b696754da84a80746c4fabfc0949dbe92fe825b2d7c45b3532f0029', 
+     gas: '4700000'
+   }, function (e, contract){
+    console.log(e, contract);
+    if (typeof contract.address !== 'undefined') {
+         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+    }
+ })
+var exampleContract = eth.contract([{"constant":true,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":false,"name":"_value","type":"int256"}],"name":"ReturnValue","type":"event"}]).at("0xBbc52E8417021d6a642f744CbE5FC904E31D2242")
+var exampleEvent = exampleContract.ReturnValue({_from: web3.eth.coinbase});
+exampleEvent.watch(function(err, result) {
+  if (err) {
+    console.log(err)
+    return;
+  }
+  console.log(result.args._value)
+  // check that result.args._from is web3.eth.coinbase then
+  // display result.args._value in the UI and call
+  // exampleEvent.stopWatching()
+})
+exampleContract.foo.sendTransaction(2, {from: web3.eth.coinbase})
+exampleContract.foo(2)
+var cryptoexchangeContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"_amount","type":"uint256"},{"name":"_market","type":"uint256"}],"name":"deposit","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_market","type":"uint256"},{"indexed":true,"name":"_sender","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"Deposit","type":"event"}]);
+var cryptoexchange = cryptoexchangeContract.new(
+   {
+     from: web3.eth.accounts[0], 
+     data: '0x6080604052348015600f57600080fd5b5060e08061001e6000396000f300608060405260043610603e5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663e2bbb15881146043575b600080fd5b348015604e57600080fd5b50605b600435602435606d565b60408051918252519081900360200190f35b604080518381524260208201528151600092339285927fd36a2f67d06d285786f61a32b052b9ace6b0b7abef5177b54358abdc83a0b69b929181900390910190a3929150505600a165627a7a7230582042e910b8b709b7d3d95f483cbab2e975c2dacce4a46fcb4ac5b68ee5ade7c90f0029', 
+     gas: '4700000'
+   }, function (e, contract){
+    console.log(e, contract);
+    if (typeof contract.address !== 'undefined') {
+         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+    }
+ })
+var cryptoExContract = eth.contract([{"constant":false,"inputs":[{"name":"_amount","type":"uint256"},{"name":"_market","type":"uint256"}],"name":"deposit","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_market","type":"uint256"},{"indexed":true,"name":"_sender","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"Deposit","type":"event"}]).at("0xF1C0799df5F03156102FAfA90289C0EDa2370A83")
+var depositEvent = cryptoExContract.Deposit({_sender: userAddress});
+depositEvent.watch(function(err, result) {
+  if (err) {
+    console.log(err)
+    return;
+  }
+  else{
+      // append details of result.args to UI
+      //将这笔交易写入客户端资料库中，方便以后查询历史交易数据。
+  }
+})
+var depositEventAll = cryptoExContract.Deposit({_sender: userAddress}, {fromBlock: 0, toBlock: 'latest'});
+depositEventAll.watch(function(err, result) {
+  if (err) {
+    console.log(err)
+    return;
+  }
+  else{
+  // append details of result.args to UI
+  //如果不想再被通知可以调用：
+  //depositEventAll.stopWatching();
+  }
+})
+cryptoExContract.(123,123)
+cryptoExContract.deposit(123,123)
+cryptoExContract.deposit.sendTransaction(123,123, {from: web3.eth.coinbase})
+cryptoExContract.deposit.sendTransaction(123,123)
+cryptoExContract.deposit(123,123,{from: eth.coinbase})
+eth.getTransactionReceipt("0xc9397b5b5f565fcdc1c58e6322829c1af100bf21eb1ef7cbcf2432b846c6aa87")
+cryptoExContract
+cryptoExContract.deposit(123,123,{from: eth.coinbase})
+eth.getTransactionReceipt("0x0fe3e7c9f8bc70b75d249f9e44fd2530c3d063be953c57adcf03d55051322659")
+cryptoExContract.deposit(123,123,{from: eth.coinbase})
+eth.getTransactionReceipt("0xa50c914f469686f3ba98b52602f6240f1590858d11dca181c234433dc9e114f5")
+eth.getTransactionReceipt("0xF1C0799df5F03156102FAfA90289C0EDa2370A83")
+var f00Contract = web3.eth.contract([{"constant":false,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
+var f00 = f00Contract.new(
+   {
+     from: web3.eth.accounts[0], 
+     data: '0x6080604052348015600f57600080fd5b50609b8061001e6000396000f300608060405260043610603e5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416634c970b2f81146043575b600080fd5b348015604e57600080fd5b506058600435606a565b60408051918252519081900360200190f35b8002905600a165627a7a7230582028f6a147ac0e952f6fef1d581684e6ca5b40b3b011817c918f2c34eb3a44fca50029', 
+     gas: '4700000'
+   }, function (e, contract){
+    console.log(e, contract);
+    if (typeof contract.address !== 'undefined') {
+         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+    }
+ })
+var ret = f00.foo.call(25);
+var ret = f00.foo.call(25)
+var f00 = eth.contract([{"constant":false,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]).at("0x1f8da83fe7aE665C710B1958E1Fa9d62b95D8cA4")
+var ret = f00.foo.call(25);
+console.log(ret);
+console.log(ret)
+f00.foo.call(25)
+clear
+car f00 = eth.contract([{"constant":false,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_value","type":"int256"}],"name":"retValue","type":"event"}]).at("0xc0fb251a24a94eeb2ed02b4d508e79d6d4489b10")
+var f00 = eth.contract([{"constant":false,"inputs":[{"name":"_value","type":"int256"}],"name":"foo","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_value","type":"int256"}],"name":"retValue","type":"event"}]).at("0xc0fb251a24a94eeb2ed02b4d508e79d6d4489b10")
+f00.foo(123)
+f00.foo(123,{from: eth.coinbase})
+eth.getTransactionReceipt("0x2d2fbe932e97bc8b7504fca9c652075f8c152b16034c15d6ea249ead3c7cd34e")
+f00.foo(123)
+f00.foo(123,{from: eth.coinbase})
+f00.foo(25,{from: eth.coinbase})
+f00.foo.call(25)
+var ret = f00.foo.call()
+var ret = f00.foo.call(25)
+console.log(ret)
+var retValueEvent = f00.retValue();
+retValueEvent.watch(function(err, result){
+    if(err){
+        console.log(err);
+        return;
+    }
+    console.log(result.args._value);
+});
+console.log(ret)
+var depositAccount = eth.contract([{"constant":false,"inputs":[],"name":"deposit","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"Deposit","type":"event"}]).at("0x0d401d03fb32dbb20fd713570f025d2448bda76c")
+eth.getTransationReceipt("0x9d2f116829222528b04cc16aa077409dfa47799fd77f557d171bab2b83c04fc9")
+eth.getTransacitionReceipt("0x9d2f116829222528b04cc16aa077409dfa47799fd77f557d171bab2b83c04fc9")
+eth.getTransacitonReceipt("0x9d2f116829222528b04cc16aa077409dfa47799fd77f557d171bab2b83c04fc9")
+eth.getTransactionReceipt("0x9d2f116829222528b04cc16aa077409dfa47799fd77f557d171bab2b83c04fc9")
+eth.cointbase
+eth.coinbases
+eth.c;inbase
+eth.coinbase
+var depositEvent = depositaccount.Deposit({_owner:'0x8e3c134ac12df5534d94cd179c46b6b34267601c'});
+var depositEvent = depositAccount.Deposit({_owner:'0x8e3c134ac12df5534d94cd179c46b6b34267601c'});
+depositEvent.watch(function(err, results) {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    if(results.args._amount > web3.toWei(0.05,"ether")){
+        console.log("User: " + results.args._owner +
+                    " deposits: " + results.args._amount +
+                    " on: " + 
+JSON.stringify(new Date((parseInt(results.args._time)+28800)*1000))
+                   );
+    }
+});
+depositAccount({value: web3.toWei(10,"ether")})
+depositAccount.deposit({value: web3.toWei(10,"ether")})
+depositAccount.deposit({from: eth.coinbase, value: web3.toWei(10,"ether")})
+eth.getTransationReceipt("fullhash=0x39aaa223d06a618663d8738ca09f8ec428c98c4bef5734a06a2699c7ead7ea84")
+eth.getTransationReceipt("0x39aaa223d06a618663d8738ca09f8ec428c98c4bef5734a06a2699c7ead7ea84")
+eth.getTransactionReceipt("0x39aaa223d06a618663d8738ca09f8ec428c98c4bef5734a06a2699c7ead7ea84")
+.datadir
+node index.js
+index.js
+./ index
+./index
+npm
+eth.accounts
+web3.eth.blockNumber
+const Web3 = require('web3');
+/*
+* connect to ethereum node
+*/
+const ethereumUri = 'http://localhost:8540';
+let web3 = new Web3();
+web3.setProvider(new web3.providers.HttpProvider(ethereumUri));
+if(!web3.isConnected()){
+    throw new Error('unable to connect to ethereum node at ' + ethereumUri);
+}else{
+    console.log('connected to ehterum node at ' + ethereumUri);
+    let coinbase = web3.eth.coinbase;
+    console.log('coinbase:' + coinbase);
+    let balance = web3.eth.getBalance(coinbase);
+    console.log('balance:' + web3.fromWei(balance, 'ether') + " ETH");
+    let accounts = web3.eth.accounts;
+    console.log(accounts);
+}
+web3.isConnected()
+infoContract.setInfo(karen,18)
+web3.isConnected())
+web3.isConnected()
+web3.eth.isConnected()
+web3.isConnected()
+web3.isConnected
+eth.accounts
