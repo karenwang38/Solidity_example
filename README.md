@@ -2,7 +2,7 @@
 simple solidity language example
 (some examples is reference from 實戰區塊鏈技術：加密貨幣與密碼學
 
-- call_contract
+1. call_contract
 	- calculate.sol 
 	- computer.sol
 
@@ -15,7 +15,7 @@ simple solidity language example
 	3. excute cauculate contract to multiple two number.
 
 
-- Ethtest_ERC20
+2. Ethtest_ERC20
 	- ERC20_interface.sol
 	- ERC20_token.sol
 
@@ -28,10 +28,10 @@ simple solidity language example
 		- withdraw (eth from contract)
 		- delet contract
 
-- 30challenges
+3. 30challenges
 	from: https://medium.com/@pbrudny/the-best-way-to-become-an-ethereum-developer-in-2018-part-3-4f98d88c856d
 
-- Account_Procedure
+4. Account_Procedure
 	1. Account_procedure.sol
 	
 	Description
@@ -53,21 +53,21 @@ simple solidity language example
 		- any account
 		- only deploied account
 
-- Acution
+5. Acution
 	1. SimpleAction.sol
 	2. evenTest.sol
 	
 	Description
 	- eventest with web3.js
 
-- ImportTest
+6. ImportTest
 	1. ReturnStr.sol
 	2. ImportStr.sol
 	
 	Description
 	- ImportStr contract import ReturnStr.sol to use function.
 	
-- Type_test
+7. Type_test
 	1. arraytest.sol
 	2. strucTest.sol
 	
@@ -75,7 +75,7 @@ simple solidity language example
 	- check the array type : uint[], butes32[], string, butes procedure.
 	- check struct , how to assign and call the element.
 	
-- call_contract
+8. call_contract
 	1. calculate.sol
 	2. computer.sol
 	
