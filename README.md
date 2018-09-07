@@ -2,7 +2,7 @@
 simple solidity language example
 (some examples is reference from 實戰區塊鏈技術：加密貨幣與密碼學
 
-//call_contract
+call_contract
 - calculate.sol 
 - computer.sol
 
@@ -14,7 +14,8 @@ Step
 2. deploy computer contract.
 3. excute cauculate contract to multiple two number.
 
-//Ethtest_ERC20
+
+Ethtest_ERC20
 - ERC20_interface.sol
 - ERC20_token.sol
 
