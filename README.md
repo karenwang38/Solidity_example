@@ -75,9 +75,6 @@ simple solidity language example
 	- check the array type : uint[], butes32[], string, butes procedure.
 	- check struct , how to assign and call the element.
 	
-8. call_contract
-	1. calculate.sol
-	2. computer.sol
-	
-	Description
-	- computer contract calls calculate on the chain and use function.
+8. TruffleTestInSolidityJava
+	1. Truffle test in Solidity
+	2. Truffle test in Javascript	
